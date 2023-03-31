@@ -1,0 +1,66 @@
+﻿@using ScenesPhotography.Web.Data
+@model IndexViewModel
+
+<div class="container">
+    <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Blog</h1>
+            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+            @if (User.IsInRole(UserRoles.Admin))
+            {
+                <p>
+                    <a type="btn btn-success" asp-controller="Blog" asp-action="Create" class="btn btn-sm btn-outline-secondary">Create</a>
+                </p>
+            }
+        </div>
+    </div>
+    </section>
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8 col-md-8 mx-auto">
+            <!-- Featured blog post-->
+            <div class="card mb-4">
+                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a> <!--Aspect ratio eg. ratio ratio-16x9-->
+                <div class="card-body">
+                    <div class="small text-muted">January 1, 2022</div>
+                    <h2 class="card-title">Featured Post Title</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <a class="btn btn-primary" href="#!">Read more →</a>
+                </div>
+            </div>
+            <!-- Nested row for non-featured blog posts-->
+            <div class="row">
+                @foreach(var post in Model.Posts)
+                {
+                    <div class="col-lg-6">
+                        <!-- Blog post-->
+                        <div class="card mb-4">
+                            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>
+                            <div class="card-body">
+                                <div class="small text-muted">@post.CreatedAt.ToShortDateString()</div>
+                                <h2 class="card-title h4">@post.Title</h2>
+                                <p class="card-text">@post.Description</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a type="btn btn-success" asp-controller="Blog" asp-action="Detail" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Read</a>
+                                        @if (User.IsInRole(UserRoles.Admin))
+                                        {
+                                            <a type="btn btn-success" asp-controller="Blog" asp-action="Edit" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            <a type="btn btn-success" asp-controller="Blog" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                                        }
+                                    </div>
+                                    <small class="text-muted">9 views</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- Pagination-->
+            <div class="row">
+                <partial name="_BlogPagination" model="Model" />
+            </div>
+        </div>
+    </div>
+</div>

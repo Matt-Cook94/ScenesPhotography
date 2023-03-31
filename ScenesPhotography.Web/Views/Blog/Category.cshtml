@@ -1,0 +1,61 @@
+﻿@using ScenesPhotography.Web.Data
+@model IEnumerable<Post>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Blog</h1>
+                <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <!-- Blog entries-->
+            <div class="col-lg-8 col-md-8 mx-auto">
+                <!-- Nested row for non-featured blog posts-->
+                <div class="row">
+                    @foreach (var post in Model)
+                    {
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">@post.CreatedAt.ToShortDateString()</div>
+                                    <h2 class="card-title h4">@post.Title</h2>
+                                    <p class="card-text">@post.Description</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a type="btn btn-success" asp-controller="Blog" asp-action="Detail" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Read</a>
+                                            @if (User.IsInRole(UserRoles.Admin))
+                                            {
+                                                <a type="btn btn-success" asp-controller="Blog" asp-action="Edit" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                                <a type="btn btn-success" asp-controller="Blog" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                                            }
+                                        </div>
+                                        <small class="text-muted">9 views</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- Pagination-->
+                <nav aria-label="Pagination">
+                    <hr class="my-0" />
+                    <ul class="pagination justify-content-center my-4">
+                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</main>

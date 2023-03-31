@@ -1,0 +1,117 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ScenesPhotography.Web.Data
+@inject IConfiguration Configuration
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Scenes Photography</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ScenesPhotography.Web.styles.css" asp-append-version="true" />
+    <!-- TinyMCE -->
+    <script src="/lib/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#tiny'
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper d-flex flex-column min-vh-100">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white py-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/img/logo-favicon.png" alt="Logo" style="width:40px;" class="rounded-pill"> 
+                </a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Scenes Photography</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 flex-s">
+                        <li class="nav-item px-2">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        @if (User.IsInRole(UserRoles.Admin))
+                        {
+                            <li class="nav-item ms-auto px-2">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main role="main">
+            @RenderBody()
+        </main>
+
+        <!--footer-->
+        <div class="container-fluid px-5 bg-dark mt-auto">
+            <footer class="px-5 pt-5 text-white">
+                <div class="row px-5">
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                        <h5>Navigate</h5>
+                        <ul class="nav flex-column">
+                            <a class="nav-link p-0 text-muted mb-2" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link p-0 text-muted mb-2" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                            <a class="nav-link p-0 text-muted mb-2" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
+                            <a class="nav-link p-0 text-muted mb-2" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </ul>
+                    </div>
+
+                    <div class="col-2">
+                        <h5>Social</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Youtube</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
+                            <a class="nav-link p-0 text-muted mb-2" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </ul>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-6">
+                        <form>
+                            <h5>Subscribe to our newsletter</h5>
+                            <p>Monthly digest of whats new and exciting.</p>
+                            <div class="d-flex w-100 gap-2">
+                                <label for="newsletter1" class="visually-hidden">Email address</label>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between px-5 pt-4 mt-4 border-top">
+                    <p>2023 Scenes Photography</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter" /></svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram" /></svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook" /></svg></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

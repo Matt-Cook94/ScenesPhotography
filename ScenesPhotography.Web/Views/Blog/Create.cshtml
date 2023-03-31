@@ -1,0 +1,47 @@
+﻿@model CreatePostViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container p-5">
+    <h3>Create Post</h3>
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        <!--<input type="hidden" id="AppUserId" name="AppUserId" asp-for="" />-->
+        <div class="form-group">
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Title">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Author">Author</label>
+            <input asp-for="Author" class="form-control" placeholder="Author">
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" class="form-control" placeholder="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Body">Body</label>
+            <textarea id="tiny" asp-for="Body" class="form-control" placeholder="Body"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="BlogCategory">BlogCategory</label>
+            <select asp-for="BlogCategory" asp-items="@Html.GetEnumSelectList<BlogCategory>()" class="form-control form-control-lg">
+                <option>--Select--</option>
+            </select>
+            <span asp-validation-for="BlogCategory" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Image</label>
+            <input asp-for="Image" type="file" class="form-control" placeholder="Image">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

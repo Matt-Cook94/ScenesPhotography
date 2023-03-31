@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<!-- Jumbotron -->
+<div class="hero container-fluid px-5 py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 mb-3">Scenes Photography</h1>
+                <p class="col-lg-10 fs-4">Commodo odio aenean sed adipiscing diam. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Massa sapien faucibus et molestie ac.</p>
+                <a type="btn" asp-controller="Blog" asp-action="Index" class="btn btn-secondary">READ THE BLOG</a>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3 bg-light">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+                    <hr class="my-4">
+                    <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-5 text-center">
+    <h1 class="display-5 fw-bold pb-2 border-bottom">Features</h1>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+            <div class="card card-cover h-100 text-white overflow-hidden bg-dark rounded-5 shadow-lg" style="background-image: url('/img/photo-camera.jpg')">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white">
+                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">My Camera Picks</h3>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                        </li>
+                        <li class="d-flex align-items-center me-3">
+                            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                            <small>Earth</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-cover h-100 text-white overflow-hidden bg-dark rounded-5 shadow-lg" style="background-image: url('/img/photo-essentials.webp')">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white">
+                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Essential Gear</h3>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                        </li>
+                        <li class="d-flex align-items-center me-3">
+                            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill" /></svg>
+                            <small>Earth</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-cover h-100 text-white overflow-hidden bg-dark rounded-5 shadow-lg" style="background-image: url('/img/photo-tips.jpg')">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white">
+                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Photography tips</h3>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                        </li>
+                        <li class="d-flex align-items-center me-3">
+                            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill" /></svg>
+                            <small>Earth</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="px-4 py-5 my-5 text-center border-top">
+    <h1 class="display-5 fw-bold">Follow along with my journey</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Morbi tristique senectus et netus et malesuada. Morbi non arcu risus quis varius quam quisque id diam. Enim neque volutpat ac tincidunt. At urna condimentum mattis pellentesque id nibh tortor id. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a type="btn" asp-controller="Blog" asp-action="Index" class="btn btn-lg px-4 gap-3 btn-outline-secondary">READ THE BLOG</a>
+        </div>
+    </div>
+</div>

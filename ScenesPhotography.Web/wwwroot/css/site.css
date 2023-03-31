@@ -1,0 +1,45 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.bg-image + .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.rounded-5 {
+    border-radius: 0.5rem !important;
+}
+
+.hero {
+    min-height: 80vh;
+    background: url(/img/photo-big-one.jpg) center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
